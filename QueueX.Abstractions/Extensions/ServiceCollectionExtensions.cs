@@ -8,53 +8,40 @@ namespace QueueX.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    /// <summary>
+    /// Adiciona o QueueX ao container de serviços, com configuração via delegate.
+    /// </summary>
+    /// <param name="services">Coleção de serviços do container.</param>
+    /// <param name="configure">Ação para configurar o QueueOptions.</param>
     public static IServiceCollection AddQueueX(
         this IServiceCollection services,
-        Action<QueueOptions> configureOptions,
-        params Assembly[] consumerAssemblies)
+        Action<QueueOptions> configure)
     {
         var options = new QueueOptions();
-        configureOptions(options);
+        configure(options);
+
         services.AddSingleton(options);
 
-        if (string.IsNullOrWhiteSpace(options.Host))
-        {
-            throw new InvalidOperationException("O Host do provedor de mensageria precisa ser configurado.");
-        }
-
-        RegisterConsumers(services, consumerAssemblies);
-
-        switch (options.Provider)
-        {
-            case QueueProvider.RabbitMq:
-                throw new NotImplementedException("O provedor RabbitMQ ainda não foi implementado.");
-            
-            case QueueProvider.Kafka:
-                throw new NotImplementedException("O provedor Kafka ainda não foi implementado.");
-
-            default:
-                throw new ArgumentOutOfRangeException(nameof(options.Provider), "Provedor de mensageria não suportado ou inválido.");
-        }
+        // Switch para registrar RabbitMQ ou Kafka (ou outro provedor)
+        // ex: services.AddSingleton<IQueueProvider, RabbitMqProvider>();
 
         return services;
     }
 
-    private static void RegisterConsumers(IServiceCollection services, Assembly[] assembliesToScan)
+    /// <summary>
+    /// Registra um consumidor tipado para uma fila ou tópico específico.
+    /// </summary>
+    /// <typeparam name="TConsumer">Tipo do consumidor.</typeparam>
+    /// <typeparam name="TMessage">Tipo da mensagem consumida.</typeparam>
+    /// <param name="services">Coleção de serviços do container.</param>
+    /// <param name="queueOrTopic">Nome da fila ou tópico.</param>
+    public static IServiceCollection AddQueueConsumer<TConsumer, TMessage>(
+        this IServiceCollection services,
+        string queueOrTopic)
+        where TConsumer : class, IMessageConsumer<TMessage>
     {
-        if (assembliesToScan.Length == 0)
-        {
-            assembliesToScan = new[] { Assembly.GetEntryAssembly()! };
-        }
-
-        var consumerTypes = assembliesToScan
-            .SelectMany(a => a.GetTypes())
-            .Where(t => t.IsClass && !t.IsAbstract && t.GetInterfaces()
-                .Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMessageConsumer<>)))
-            .ToList();
-
-        foreach (var type in consumerTypes)
-        {
-            services.AddScoped(type);
-        }
+        services.AddTransient<IMessageConsumer<TMessage>, TConsumer>();
+        return services;
     }
+    
 }
