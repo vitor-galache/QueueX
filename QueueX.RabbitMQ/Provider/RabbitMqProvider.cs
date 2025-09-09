@@ -31,9 +31,9 @@ public class RabbitMqProvider : IQueueProvider
 
     public IMessagePublisher CreatePublisher() => new RabbitMqPublisher(_connection);
 
-    public void RegisterConsumer<T>(string queueOrTopic, IMessageConsumer<T> consumer)
+    public Task RegisterConsumer<T>(string queueOrTopic, IMessageConsumer<T> consumer)
     {
-        _ = RegisterConsumerInternal(queueOrTopic, consumer);
+        return RegisterConsumerInternal(queueOrTopic, consumer);
     }
 
     private async Task RegisterConsumerInternal<T>(string queueOrTopic, IMessageConsumer<T> consumer)
@@ -41,7 +41,7 @@ public class RabbitMqProvider : IQueueProvider
         var channel = await _connection.CreateChannelAsync();
         await channel.QueueDeclareAsync(
             queue: queueOrTopic,
-            durable: false,
+            durable: true,
             exclusive: false,
             autoDelete: false,
             arguments: null);

@@ -5,8 +5,6 @@ namespace QueueX.Configuration;
 /// </summary>
 public class QueueOptions
 {
-    public QueueProvider Provider { get; set; }
-     
     public string Host { get; set; } = string.Empty;
     
     public int Port { get; set; }

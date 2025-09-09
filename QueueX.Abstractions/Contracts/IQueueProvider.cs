@@ -20,5 +20,5 @@ public interface IQueueProvider
     /// <typeparam name="T">Tipo da mensagem consumida.</typeparam>
     /// <param name="queueOrTopic">Nome da fila ou tópico.</param>
     /// <param name="consumer">Instância do consumidor.</param>
-    void RegisterConsumer<T>(string queueOrTopic, IMessageConsumer<T> consumer);
+    Task RegisterConsumer<T>(string queueOrTopic, IMessageConsumer<T> consumer);
 }

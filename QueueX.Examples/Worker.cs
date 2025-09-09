@@ -1,23 +1,15 @@
+using QueueX.Contracts;
+using QueueX.Examples.Messages;
+
 namespace QueueX.Examples;
 
 public class Worker : BackgroundService
 {
-    private readonly ILogger<Worker> _logger;
-
-    public Worker(ILogger<Worker> logger)
-    {
-        _logger = logger;
-    }
+    private readonly IMessagePublisher _publisher;
+    public Worker(IMessagePublisher publisher) => _publisher = publisher;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            if (_logger.IsEnabled(LogLevel.Information))
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            }
-            await Task.Delay(1000, stoppingToken);
-        }
+        await _publisher.PublishAsync(new MyMessage { Texto = "Olá!" }, "queue-test");
     }
 }
