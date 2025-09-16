@@ -13,18 +13,16 @@ public class RabbitMqProvider : IQueueProvider
     private readonly IConnection _connection;
     private readonly QueueOptions _options;
 
-    public RabbitMqProvider(QueueOptions options)
+    public RabbitMqProvider(QueueOptions options,IConnection? connection = null)
     {
         _options = options;
-        var factory = new ConnectionFactory
+        _connection = connection ?? new ConnectionFactory
         {
             HostName = options.Host,
             Port = options.Port,
             UserName = options.User,
             Password = options.Password,
-        };
-
-        _connection = factory.CreateConnectionAsync().GetAwaiter().GetResult();
+        }.CreateConnectionAsync().GetAwaiter().GetResult();
     }
 
     public QueueProvider Provider => QueueProvider.RabbitMq;
