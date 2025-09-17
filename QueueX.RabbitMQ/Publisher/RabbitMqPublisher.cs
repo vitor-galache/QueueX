@@ -5,7 +5,7 @@ using RabbitMQ.Client;
 
 namespace QueueX.RabbitMQ.Publisher;
 
-public class RabbitMqPublisher : IMessagePublisher
+internal sealed class RabbitMqPublisher : IMessagePublisher
 {
     private readonly IConnection _connection;
     public RabbitMqPublisher(IConnection connection)

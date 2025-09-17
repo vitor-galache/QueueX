@@ -8,7 +8,7 @@ using RabbitMQ.Client.Events;
 
 namespace QueueX.RabbitMQ.Provider;
 
-public class RabbitMqProvider : IQueueProvider
+internal sealed class RabbitMqProvider : IQueueProvider
 {
     private readonly IConnection _connection;
     private readonly QueueOptions _options;

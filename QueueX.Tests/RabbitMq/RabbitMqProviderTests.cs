@@ -98,7 +98,5 @@ public class RabbitMqProviderTests
         false,
         false,
         It.IsAny<CancellationToken>()), Times.Once);
-
-
     }
 }
