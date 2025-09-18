@@ -1,11 +1,8 @@
 ﻿using Moq;
-using QueueX.Configuration;
-using QueueX.Contracts;
 using QueueX.RabbitMQ.Provider;
 using QueueX.Tests.RabbitMq.Mocks;
 using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using Xunit;
+
 namespace QueueX.Tests.RabbitMq;
 
 public class RabbitMqProviderTests

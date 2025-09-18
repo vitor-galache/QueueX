@@ -1,6 +1,5 @@
 using System.Text;
 using System.Text.Json;
-using QueueX.Contracts;
 using RabbitMQ.Client;
 
 namespace QueueX.RabbitMQ.Publisher;

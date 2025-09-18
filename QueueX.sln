@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11012.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueX.Abstractions", "QueueX.Abstractions\QueueX.Abstractions.csproj", "{C10FD087-6D15-4428-ADA7-11FB75A7DA72}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueX.Tests", "QueueX.Tests\QueueX.Tests.csproj", "{2FFA99A6-912C-44E0-AF3F-A73ECC6B0B8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueX.RabbitMQ", "QueueX.RabbitMQ\QueueX.RabbitMQ.csproj", "{A795042F-9413-46C4-BAD1-459541B7FB52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueX", "QueueX\QueueX.csproj", "{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,8 +71,23 @@ Global
 		{A795042F-9413-46C4-BAD1-459541B7FB52}.Release|x64.Build.0 = Release|Any CPU
 		{A795042F-9413-46C4-BAD1-459541B7FB52}.Release|x86.ActiveCfg = Release|Any CPU
 		{A795042F-9413-46C4-BAD1-459541B7FB52}.Release|x86.Build.0 = Release|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Debug|x64.Build.0 = Debug|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Debug|x86.Build.0 = Debug|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Release|x64.ActiveCfg = Release|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Release|x64.Build.0 = Release|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAFA57C5-8F78-4760-A607-2C0333AAEAFD}
 	EndGlobalSection
 EndGlobal

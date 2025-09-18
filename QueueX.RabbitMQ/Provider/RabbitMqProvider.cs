@@ -1,7 +1,5 @@
 using System.Text;
 using System.Text.Json;
-using QueueX.Configuration;
-using QueueX.Contracts;
 using QueueX.RabbitMQ.Publisher;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;

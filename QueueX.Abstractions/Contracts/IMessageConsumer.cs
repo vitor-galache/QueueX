@@ -1,4 +1,4 @@
-namespace QueueX.Contracts;
+namespace QueueX;
 
 /// <summary>
 /// Define um consumidor de mensagens tipadas.

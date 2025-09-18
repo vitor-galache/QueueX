@@ -1,4 +1,4 @@
-namespace QueueX.Configuration;
+namespace QueueX;
 
 /// <summary>
 /// Define os provedores de mensageria suportados.

@@ -1,4 +1,4 @@
-using QueueX.Contracts;
+using QueueX;
 using QueueX.Examples.Messages;
 
 namespace QueueX.Examples.Consumers;

@@ -1,4 +1,3 @@
-using QueueX.Contracts;
 using QueueX.Examples.Messages;
 
 namespace QueueX.Examples;

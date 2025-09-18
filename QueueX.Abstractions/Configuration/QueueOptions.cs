@@ -1,4 +1,4 @@
-namespace QueueX.Configuration;
+namespace QueueX;
 
 /// <summary>
 /// Opções de configuração para o QueueX.Abstractions.

@@ -1,10 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using QueueX.Configuration;
-using QueueX.Contracts;
 using QueueX.Services;
 
-namespace QueueX.Extensions;
+namespace QueueX;
 
 public static class ServiceCollectionExtensions
 {

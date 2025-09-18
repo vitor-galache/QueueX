@@ -1,8 +1,7 @@
 using QueueX.Examples;
 using QueueX.Examples.Consumers;
 using QueueX.Examples.Messages;
-using QueueX.Extensions;
-using QueueX.RabbitMQ.Extensions;
+using QueueX;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddHostedService<Worker>();

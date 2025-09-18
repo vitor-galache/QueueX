@@ -10,6 +10,7 @@
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="QueueX.Tests" />
+		<InternalsVisibleTo Include="QueueX" />
 	</ItemGroup>
 
 	<PropertyGroup>

@@ -1,4 +1,4 @@
-namespace QueueX.Contracts;
+namespace QueueX;
 
 public interface IMessagePublisher
 {

@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Hosting;
-using QueueX.Contracts;
 
 namespace QueueX.Services;
 

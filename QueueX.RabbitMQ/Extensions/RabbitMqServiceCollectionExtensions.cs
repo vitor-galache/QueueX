@@ -1,13 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
-using QueueX.Configuration;
-using QueueX.Contracts;
 using QueueX.RabbitMQ.Provider;
 
 namespace QueueX.RabbitMQ.Extensions;
 
-public static class RabbitMqServiceCollectionExtensions
+internal static class RabbitMqServiceCollectionExtensions
 {
-    public static IServiceCollection UseRabbitMq(this IServiceCollection services)
+    internal static IServiceCollection UseRabbitMq(this IServiceCollection services)
     {
         services.AddSingleton<IQueueProvider>(sp =>
         {

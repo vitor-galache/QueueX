@@ -1,6 +1,5 @@
-using QueueX.Configuration;
 
-namespace QueueX.Contracts;
+namespace QueueX;
 
 public interface IQueueProvider
 {
