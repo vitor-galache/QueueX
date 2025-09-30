@@ -13,6 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueX.RabbitMQ", "QueueX.R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueX", "QueueX\QueueX.csproj", "{4E46C6F3-655B-45CC-B9F5-6B0DC56091F0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{CC75A8A4-BDBA-4A28-ACED-CD5F9FC6440C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{251C2FAA-BA6D-481B-AD56-9C781E6D3453}"
+	ProjectSection(SolutionItems) = preProject
+		publish.yml = publish.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +93,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{251C2FAA-BA6D-481B-AD56-9C781E6D3453} = {CC75A8A4-BDBA-4A28-ACED-CD5F9FC6440C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BAFA57C5-8F78-4760-A607-2C0333AAEAFD}
