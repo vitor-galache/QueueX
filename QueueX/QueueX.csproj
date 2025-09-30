@@ -20,7 +20,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageTags>rabbit;messaging;kafka;</PackageTags>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageReadmeFile>..\README.md</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
@@ -28,7 +28,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\QueueX.RabbitMQ\QueueX.RabbitMQ.csproj" />
 		<None Include="icon.png" Pack="true" PackagePath="" />
-		<None Include="..\README.md" Pack="true" PackagePath="" />
+		<None Include="README.md" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 </Project>
