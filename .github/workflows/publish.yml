@@ -23,11 +23,17 @@ jobs:
       - name: Extract version from tag
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-      - name: Build solution
-        run: dotnet build --configuration Release
+      - name: Build QueueX.Abstractions
+        run: dotnet build ./QueueX.Abstractions/QueueX.Abstractions.csproj --configuration Release
+
+      - name: Build QueueX.RabbitMQ
+        run: dotnet build ./QueueX.RabbitMQ/QueueX.RabbitMQ.csproj --configuration Release
+
+      - name: Build QueueX
+        run: dotnet build ./QueueX/QueueX.csproj --configuration Release
 
       - name: Run tests
-        run: dotnet test
+        run: dotnet test --no-build --configuration Release
 
       - name: Pack QueueX.Abstractions
         run: dotnet pack ./QueueX.Abstractions/QueueX.Abstractions.csproj --configuration Release /p:PackageVersion=$VERSION -o ./artifacts
