@@ -23,6 +23,12 @@ jobs:
       - name: Extract version from tag
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
+      - name: Setup NuGet sources
+        run: |
+          mkdir -p $HOME/local-nuget-feed
+          dotnet nuget add source $HOME/local-nuget-feed --name LocalFeed --configfile $HOME/.nuget/NuGet.Config || true
+          dotnet nuget add source https://api.nuget.org/v3/index.json --name NuGetOrg --configfile $HOME/.nuget/NuGet.Config || true
+
       - name: Build QueueX.Abstractions
         run: dotnet build ./QueueX.Abstractions/QueueX.Abstractions.csproj --configuration Release
 
