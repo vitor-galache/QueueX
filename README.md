@@ -1,7 +1,7 @@
 # QueueX
+<img src="https://api.nuget.org/v3-flatcontainer/queuex/1.0.1/icon" alt="Logo do pacote" width="800" height="800" />
 
 Pacote com intuito de simplificar a integração de serviços de mensageria (RabbitMQ, Kafka) com ecossistema .NET.
-
 
 ## Introdução
 
