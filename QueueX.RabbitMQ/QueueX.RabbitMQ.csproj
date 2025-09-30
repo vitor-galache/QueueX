@@ -11,6 +11,7 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="QueueX.Tests" />
 		<InternalsVisibleTo Include="QueueX" />
+		<None Include="icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -18,5 +19,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+
+	<PropertyGroup>
+		<PackageId>QueueX.RabbitMQ</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Vitor Galache</Authors>
+		<Description>Pacote com implementação RabbitMQ para QueueX</Description>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>mensageria;rabbitmq;</PackageTags>
+	</PropertyGroup>
+
 
 </Project>

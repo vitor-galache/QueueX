@@ -1,4 +1,4 @@
-name: Build and deploy package
+name: Build and deploy multiple packages
 
 on:
   push:
@@ -6,31 +6,43 @@ on:
       - 'v*.*.*'
 
 jobs:
-  build-and-deploy:
+  build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Copy README to project folder
-      run: cp README.md QueueX/README.md
+      - name: Copy README to QueueX folder
+        run: cp README.md QueueX/README.md
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
 
-    - name: Extract version from tag
-      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+      - name: Extract version from tag
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
+      - name: Build solution
+        run: dotnet build --configuration Release
 
-    - name: Test
-      run: dotnet test
+      - name: Run tests
+        run: dotnet test
 
-    - name: Create the Package
-      run: dotnet pack --configuration Release /p:PackageVersion=$VERSION
+      - name: Pack QueueX.Abstractions
+        run: dotnet pack ./QueueX.Abstractions/QueueX.Abstractions.csproj --configuration Release /p:PackageVersion=$VERSION -o ./artifacts
 
-    - name: Publish
-      run: dotnet nuget push "QueueX/bin/Release/*.nupkg" -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: Publish QueueX.Abstractions
+        run: dotnet nuget push ./artifacts/QueueX.Abstractions.*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Pack QueueX.RabbitMQ
+        run: dotnet pack ./QueueX.RabbitMQ/QueueX.RabbitMQ.csproj --configuration Release /p:PackageVersion=$VERSION -o ./artifacts
+
+      - name: Publish QueueX.RabbitMQ
+        run: dotnet nuget push ./artifacts/QueueX.RabbitMQ.*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Pack QueueX
+        run: dotnet pack ./QueueX/QueueX.csproj --configuration Release /p:PackageVersion=$VERSION -o ./artifacts
+
+      - name: Publish QueueX
+        run: dotnet nuget push ./artifacts/QueueX.*.nupkg -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate

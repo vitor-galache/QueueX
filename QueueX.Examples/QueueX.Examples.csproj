@@ -9,9 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\QueueX\QueueX.csproj" />
+    <PackageReference Include="QueueX" Version="1.0.0" />
   </ItemGroup>
 </Project>
